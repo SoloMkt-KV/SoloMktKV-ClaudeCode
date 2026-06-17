@@ -1,0 +1,19 @@
+{
+  "name": "SoloMkt-KV",
+  "description": "SoloMkt-KV — Activity KV Key Visual poster generation plugin marketplace for Claude Code. Provides the generator-kv plugin for creating stunning promotional key visuals via the SoloMktKV API.",
+  "owner": {
+    "name": "wolf521",
+    "url": "https://github.com/wolf521"
+  },
+  "repository": "wolf521/SoloMktKV-ClaudeCode",
+  "plugins": [
+    {
+      "name": "generator-kv",
+      "description": "Generator-KV: Generate activity KV key visual posters via SoloMktKV API. Fetch style model lists, preview and select visual styles, and create professional promotional images with AI.",
+      "source": "./generator-kv",
+      "version": "1.0.0",
+      "category": "design",
+      "tags": ["kv", "poster", "image-generation", "marketing", "activity"]
+    }
+  ]
+}

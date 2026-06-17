@@ -1,0 +1,14 @@
+{
+  "name": "generator-kv",
+  "description": "Generator-KV: Generate activity KV key visual posters via SoloMktKV API. Fetch model lists, select styles, and create stunning promotional images with AI.",
+  "version": "1.0.0",
+  "author": {
+    "name": "wolf521",
+    "url": "https://github.com/wolf521"
+  },
+  "homepage": "https://github.com/wolf521/SoloMktKV-ClaudeCode",
+  "category": "design",
+  "tags": ["kv", "poster", "image-generation", "marketing", "activity"],
+  "commands": ["./commands/generate-kv.md"],
+  "skills": ["./skills/generate-kv"]
+}

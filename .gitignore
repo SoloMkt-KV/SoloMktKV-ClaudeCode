@@ -1,0 +1,12 @@
+# Claude plugin data (contains auth secrets, kept locally only)
+.claude-plugin-data/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
