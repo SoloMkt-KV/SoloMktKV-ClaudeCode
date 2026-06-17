@@ -32,7 +32,7 @@
 
 ```bash
 # 1. Add the SoloMkt-KV marketplace
-claude plugin marketplace add wolf521/SoloMktKV-ClaudeCode
+claude plugin marketplace add SoloMkt-KV/SoloMktKV-ClaudeCode
 
 # 2. Install the generator-kv plugin from the marketplace
 claude plugin install generator-kv@SoloMkt-KV
@@ -42,7 +42,7 @@ claude plugin install generator-kv@SoloMkt-KV
 
 ```bash
 # Install directly from the GitHub repository
-claude plugin install generator-kv@wolf521/SoloMktKV-ClaudeCode
+claude plugin install generator-kv@SoloMkt-KV/SoloMktKV-ClaudeCode
 ```
 
 ### Usage
@@ -101,10 +101,10 @@ Note: Uninstalling the plugin does NOT delete your `${CLAUDE_PLUGIN_DATA}/auth.j
 
 ### Repository
 
-- **GitHub**: [https://github.com/wolf521/SoloMktKV-ClaudeCode](https://github.com/wolf521/SoloMktKV-ClaudeCode)
+- **GitHub**: [https://github.com/SoloMkt-KV/SoloMktKV-ClaudeCode](https://github.com/SoloMkt-KV/SoloMktKV-ClaudeCode)
 - **Marketplace**: SoloMkt-KV
 - **Plugin Name**: generator-kv
-- **Author**: [wolf521](https://github.com/wolf521)
+- **Author**: [SoloMkt-KV](https://github.com/SoloMkt-KV)
 
 ### License
 
@@ -140,7 +140,7 @@ MIT License — see [LICENSE](LICENSE) file for details.
 
 ```bash
 # 1. 添加 SoloMkt-KV 插件市场
-claude plugin marketplace add wolf521/SoloMktKV-ClaudeCode
+claude plugin marketplace add SoloMkt-KV/SoloMktKV-ClaudeCode
 
 # 2. 从市场安装 generator-kv 插件
 claude plugin install generator-kv@SoloMkt-KV
@@ -150,7 +150,7 @@ claude plugin install generator-kv@SoloMkt-KV
 
 ```bash
 # 直接从 GitHub 仓库安装
-claude plugin install generator-kv@wolf521/SoloMktKV-ClaudeCode
+claude plugin install generator-kv@SoloMkt-KV/SoloMktKV-ClaudeCode
 ```
 
 ### 使用方式
@@ -209,10 +209,10 @@ claude plugin marketplace remove SoloMkt-KV
 
 ### 仓库信息
 
-- **GitHub 仓库**: [https://github.com/wolf521/SoloMktKV-ClaudeCode](https://github.com/wolf521/SoloMktKV-ClaudeCode)
+- **GitHub 仓库**: [https://github.com/SoloMkt-KV/SoloMktKV-ClaudeCode](https://github.com/SoloMkt-KV/SoloMktKV-ClaudeCode)
 - **插件市场名称**: SoloMkt-KV
 - **插件名称**: generator-kv
-- **作者**: [wolf521](https://github.com/wolf521)
+- **作者**: [SoloMkt-KV](https://github.com/SoloMkt-KV)
 
 ### 开源协议
 
