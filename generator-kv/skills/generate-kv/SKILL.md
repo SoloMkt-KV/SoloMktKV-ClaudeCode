@@ -134,7 +134,7 @@ jq -n \
     posterSize: $posterSize
   }' > /tmp/generate_kv_payload.json
 
-curl -s -X POST "${BASE_URL}/solomkt_kv/api/v1/generatekV" \
+curl -s -X POST "${BASE_URL}/solomkt_kv/api/v1/generateKV" \
   -H "x-api-key: ${API_KEY}" \
   -H "Content-Type: application/json" \
   -d @/tmp/generate_kv_payload.json

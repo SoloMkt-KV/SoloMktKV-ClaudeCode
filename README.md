@@ -97,7 +97,7 @@ Note: Uninstalling the plugin does NOT delete your `${CLAUDE_PLUGIN_DATA}/auth.j
 | Endpoint | Method | Description |
 |----------|--------|-------------|
 | `/solomkt_kv/api/v1/models?type=all` | GET | Fetch available style models |
-| `/solomkt_kv/api/v1/generatekV` | POST | Generate KV poster images |
+| `/solomkt_kv/api/v1/generateKV` | POST | Generate KV poster images |
 
 ### Repository
 
@@ -205,7 +205,7 @@ claude plugin marketplace remove SoloMkt-KV
 | 接口 | 请求方式 | 说明 |
 |------|----------|------|
 | `/solomkt_kv/api/v1/models?type=all` | GET | 获取可用风格模型列表 |
-| `/solomkt_kv/api/v1/generatekV` | POST | 生成 KV 主视觉图片 |
+| `/solomkt_kv/api/v1/generateKV` | POST | 生成 KV 主视觉图片 |
 
 ### 仓库信息
 

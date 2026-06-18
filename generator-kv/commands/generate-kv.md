@@ -14,7 +14,7 @@ Invoke the `generate-kv` skill to guide the user through generating an activity 
 2. **Fetch Models** — GET `/solomkt_kv/api/v1/models?type=all`
 3. **Select Model** — Let user pick from available style models
 4. **Collect Info** — activityName, activityTheme, activityTime, activityLocation
-5. **Generate** — POST `/solomkt_kv/api/v1/generatekV`
+5. **Generate** — POST `/solomkt_kv/api/v1/generateKV`
 6. **Present Results** — Display generated image URLs
 
 ## Implementation
@@ -97,7 +97,7 @@ jq -n \
     posterSize: $posterSize
   }' > /tmp/generate_kv_payload.json
 
-curl -s -X POST "${BASE_URL}/solomkt_kv/api/v1/generatekV" \
+curl -s -X POST "${BASE_URL}/solomkt_kv/api/v1/generateKV" \
   -H "x-api-key: ${API_KEY}" \
   -H "Content-Type: application/json" \
   -d @/tmp/generate_kv_payload.json
