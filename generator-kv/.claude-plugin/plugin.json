@@ -10,5 +10,5 @@
   "category": "design",
   "tags": ["kv", "poster", "image-generation", "marketing", "activity"],
   "commands": ["./commands/generate-kv.md"],
-  "skills": ["./skills/generate-kv"]
+  "skills": ["./skills/generate-kv", "./skills/setup"]
 }
