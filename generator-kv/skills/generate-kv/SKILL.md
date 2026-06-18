@@ -106,7 +106,9 @@ After getting the required info, optionally ask:
 
 ### Step 5: Call the Generate KV API
 
-Construct and send the POST request:
+**Note:** KV generation takes time — it typically completes within 1–3 minutes. Please tell the user: *"正在生成KV海报，预计需要 1–3 分钟，请耐心等待…"* (or the English equivalent: *"Generating your KV poster — this may take 1–3 minutes, please wait..."*) before making the API call.
+
+Construct and send the POST request (timeout set to 10 minutes):
 
 ```bash
 AUTH_FILE="${CLAUDE_PLUGIN_DATA}/auth.json"
@@ -137,6 +139,7 @@ jq -n \
 curl -s -X POST "${BASE_URL}/solomkt_kv/api/v1/generateKV" \
   -H "x-api-key: ${API_KEY}" \
   -H "Content-Type: application/json" \
+  --max-time 600 \
   -d @/tmp/generate_kv_payload.json
 ```
 
