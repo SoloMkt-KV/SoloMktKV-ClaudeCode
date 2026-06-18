@@ -47,6 +47,8 @@ claude plugin install generator-kv@SoloMkt-KV/SoloMktKV-ClaudeCode
 
 ### Usage
 
+#### Method 1: Slash Command
+
 ```
 /generator-kv:generate-kv <activity_name>
 ```
@@ -64,6 +66,21 @@ The plugin will then:
 4. Ask for activity details (theme, time, location)
 5. Optionally ask for supplementary prompt, quality, and size preferences
 6. Generate the KV poster and return the image URLs
+
+#### Method 2: Natural Language Conversation
+
+You don't need to remember the exact command format — just talk to Claude in natural language! The plugin will automatically recognize your intent and guide you through the generation process.
+
+**Examples:**
+
+| Trigger | Example |
+|---------|---------|
+| Chinese | `帮我生成一张【活动描述】的KV` |
+| Chinese | `为我们的【活动名称】制作一张主视觉海报` |
+| English | `Help me generate a KV poster for [activity description]` |
+| English | `Create a key visual for our [event name]` |
+
+As long as your request mentions generating a KV, key visual poster, or activity poster, the plugin will automatically activate and walk you through each step — no slash command needed.
 
 ### Configuration
 
@@ -155,6 +172,8 @@ claude plugin install generator-kv@SoloMkt-KV/SoloMktKV-ClaudeCode
 
 ### 使用方式
 
+#### 方式一：斜杠命令
+
 ```
 /generator-kv:generate-kv <活动名称>
 ```
@@ -172,6 +191,21 @@ claude plugin install generator-kv@SoloMkt-KV/SoloMktKV-ClaudeCode
 4. 引导填写活动详情（主题、时间、地点）
 5. 可选填写补充提示词、图片质量与尺寸偏好
 6. 生成 KV 海报并返回图片链接
+
+#### 方式二：自然语言对话
+
+你无需记住精确的命令格式 — 直接用自然语言和 Claude 对话即可！插件会自动识别你的意图并引导你完成生成。
+
+**示例：**
+
+| 触发方式 | 示例 |
+|----------|------|
+| 中文 | `帮我生成一张【活动描述】的KV` |
+| 中文 | `为我们的【活动名称】制作一张主视觉海报` |
+| 英文 | `Help me generate a KV poster for [activity description]` |
+| 英文 | `Create a key visual for our [event name]` |
+
+只要你的请求中提到了生成 KV、主视觉海报或活动海报，插件就会自动启动并引导你完成每一步 — 无需斜杠命令。
 
 ### 配置说明
 
