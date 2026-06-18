@@ -34,7 +34,7 @@ if [[ -f "$AUTH_FILE" ]]; then
 {
   "hookSpecificOutput": {
     "hookEventName": "SessionStart",
-    "additionalContext": "Generator-KV plugin status: API Key configured (${MASKED_KEY}) | Base URL: ${BASE_URL} | Created: ${CREATED_AT} | Source: ${SOURCE}.\\nUse /generate-kv <activity_name> to generate a KV poster."
+    "additionalContext": "Generator-KV plugin status: API Key configured (${MASKED_KEY}) | Base URL: ${BASE_URL} | Created: ${CREATED_AT} | Source: ${SOURCE}.\\nUsage: /generate-kv <activity_name> OR natural language — just say things like '帮我生成一张推广活动的KV', '为我们的新品发布制作一张KV海报', 'Help me create a KV poster for our event', and Claude will automatically guide you through the generation steps."
   }
 }
 EOF
@@ -47,7 +47,7 @@ cat <<'EOF'
 {
   "hookSpecificOutput": {
     "hookEventName": "SessionStart",
-    "additionalContext": "⚙️  Generator-KV plugin: API Key is NOT yet configured. Run /generate-kv to set up your API Key and start generating KV posters. Or provide your API Key now and Claude will auto-configure it for you."
+    "additionalContext": "⚙️  Generator-KV plugin: API Key is NOT yet configured. Run /generate-kv to set up your API Key and start generating KV posters. Or provide your API Key now and Claude will auto-configure it for you.\\nTip: You can also use natural language — just say '帮我生成一张KV海报' or 'Create a KV poster for our event' and Claude will guide you through setup first."
   }
 }
 EOF
