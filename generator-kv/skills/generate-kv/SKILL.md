@@ -1,4 +1,4 @@
-# Generator-KV — SoloMktKV 活动主视觉海报生成插件 | Activity KV Key Visual Poster Generator
+# Generator-KV �?SoloMktKV 活动主视觉海报生成插�?| Activity KV Key Visual Poster Generator
 
 [English](#english) | [中文](#chinese)
 
@@ -10,23 +10,23 @@
 
 ### Overview
 
-**Generator-KV** is a Claude Code plugin that generates activity KV (Key Visual) posters via the SoloMktKV API. It helps marketers, event planners, and designers quickly create stunning promotional key visuals by simply describing their event — no design skills needed.
+**Generator-KV** is a Claude Code plugin that generates activity KV (Key Visual) posters via the SoloMktKV API. It helps marketers, event planners, and designers quickly create stunning promotional key visuals by simply describing their event �?no design skills needed.
 
 ### Features
 
-- 🔑 **Auto API Key Configuration** — On first use, prompts you to enter your API key and saves it securely
-- 🎨 **Model List Browsing** — Fetches available style models from the API, letting you preview and choose the perfect visual style
-- 📝 **Guided Input** — Asks for activity name, theme, time, and location step by step
-- 🖼️ **One-Click Generation** — Calls the SoloMktKV API to generate professional KV posters
-- 🔒 **Secure Storage** — API keys are stored locally in `${CLAUDE_PLUGIN_DATA}/auth.json` and only sent to the configured API server
-- 🚀 **Session Reminder** — Automatically checks API key status on session start
+- 🔑 **Auto API Key Configuration** �?On first use, prompts you to enter your API key and saves it securely
+- 🎨 **Model List Browsing** �?Fetches available style models from the API, letting you preview and choose the perfect visual style
+- 📝 **Guided Input** �?Asks for activity name, theme, time, and location step by step
+- 🖼�?**One-Click Generation** �?Calls the SoloMktKV API to generate professional KV posters
+- 🔒 **Secure Storage** �?API keys are stored locally in `${CLAUDE_PLUGIN_DATA}/auth.json` and only sent to the configured API server
+- 🚀 **Session Reminder** �?Automatically checks API key status on session start
 
 ### Installation
 
 #### Prerequisites
 
 - [Claude Code](https://claude.ai/code) installed
-- A valid SoloMktKV API Key (`x-api-key`) — contact your system administrator to obtain one
+- A valid SoloMktKV API Key (`x-api-key`) �?contact your system administrator to obtain one
 
 #### Method 1: Install from Marketplace (Recommended)
 
@@ -56,7 +56,7 @@ claude plugin install generator-kv@SoloMkt-KV/SoloMktKV-ClaudeCode
 **Example:**
 
 ```
-/generator-kv:generate-kv 第四届中国国际供应链促进博览会
+/generator-kv:generate-kv 第四届中国国际供应链促进博览�?
 ```
 
 The plugin will then:
@@ -69,7 +69,7 @@ The plugin will then:
 
 #### Method 2: Natural Language Conversation
 
-You don't need to remember the exact command format — just talk to Claude in natural language! The plugin will automatically recognize your intent and guide you through the generation process.
+You don't need to remember the exact command format �?just talk to Claude in natural language! The plugin will automatically recognize your intent and guide you through the generation process.
 
 **Examples:**
 
@@ -80,7 +80,7 @@ You don't need to remember the exact command format — just talk to Claude in n
 | English | `Help me generate a KV poster for [activity description]` |
 | English | `Create a key visual for our [event name]` |
 
-As long as your request mentions generating a KV, key visual poster, or activity poster, the plugin will automatically activate and walk you through each step — no slash command needed.
+As long as your request mentions generating a KV, key visual poster, or activity poster, the plugin will automatically activate and walk you through each step �?no slash command needed.
 
 ### Configuration
 
@@ -88,14 +88,14 @@ The plugin stores your API credentials in `${CLAUDE_PLUGIN_DATA}/auth.json`:
 
 ```json
 {
-  "base_url": "https://solosmart-uat.issmart.com.cn",
+  "base_url": "https://api.kv.solomarketing.com.cn",
   "x-api-key": "your-api-key-here",
   "created_at": "2026-04-10T00:00:00.000Z",
   "source": "auto_provisioned"
 }
 ```
 
-To manually configure or update your API key, edit this file or simply run `/generator-kv:generate-kv` — the plugin will detect missing credentials and guide you through setup.
+To manually configure or update your API key, edit this file or simply run `/generator-kv:generate-kv` �?the plugin will detect missing credentials and guide you through setup.
 
 ### Uninstallation
 
@@ -113,8 +113,8 @@ Note: Uninstalling the plugin does NOT delete your `${CLAUDE_PLUGIN_DATA}/auth.j
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
-| `/solomkt_kv/api/v1/models?type=all` | GET | Fetch available style models |
-| `/solomkt_kv/api/v1/generateKV` | POST | Generate KV poster images |
+| `/api/v1/models?type=all` | GET | Fetch available style models |
+| `/api/v1/generateKV` | POST | Generate KV poster images |
 
 ### Repository
 
@@ -125,7 +125,7 @@ Note: Uninstalling the plugin does NOT delete your `${CLAUDE_PLUGIN_DATA}/auth.j
 
 ### License
 
-MIT License — see [LICENSE](LICENSE) file for details.
+MIT License �?see [LICENSE](LICENSE) file for details.
 
 ---
 
@@ -135,23 +135,23 @@ MIT License — see [LICENSE](LICENSE) file for details.
 
 ### 概述
 
-**Generator-KV** 是一款 Claude Code 插件，通过 SoloMktKV API 生成活动 KV（主视觉）海报。帮助市场营销人员、活动策划者和设计师通过简单描述活动信息，快速生成专业的主视觉图像——无需设计技能。
+**Generator-KV** 是一�?Claude Code 插件，通过 SoloMktKV API 生成活动 KV（主视觉）海报。帮助市场营销人员、活动策划者和设计师通过简单描述活动信息，快速生成专业的主视觉图像——无需设计技能�?
 
 ### 功能特点
 
-- 🔑 **自动配置 API Key** — 首次使用时提示输入 API Key 并安全保存
-- 🎨 **模型列表浏览** — 从 API 获取可用风格模型列表，预览并选择最适合的视觉风格
-- 📝 **引导式输入** — 逐步引导填写活动名称、主题、时间、地点
-- 🖼️ **一键生成** — 调用 SoloMktKV API 生成专业 KV 海报
-- 🔒 **安全存储** — API Key 仅存储在本地 `${CLAUDE_PLUGIN_DATA}/auth.json`，仅发送至配置的 API 服务器
-- 🚀 **会话提醒** — 会话启动时自动检查 API Key 配置状态
+- 🔑 **自动配置 API Key** �?首次使用时提示输�?API Key 并安全保�?
+- 🎨 **模型列表浏览** �?�?API 获取可用风格模型列表，预览并选择最适合的视觉风�?
+- 📝 **引导式输�?* �?逐步引导填写活动名称、主题、时间、地�?
+- 🖼�?**一键生�?* �?调用 SoloMktKV API 生成专业 KV 海报
+- 🔒 **安全存储** �?API Key 仅存储在本地 `${CLAUDE_PLUGIN_DATA}/auth.json`，仅发送至配置�?API 服务�?
+- 🚀 **会话提醒** �?会话启动时自动检�?API Key 配置状�?
 
 ### 安装
 
 #### 前置条件
 
-- 已安装 [Claude Code](https://claude.ai/code)
-- 拥有有效的 SoloMktKV API Key（`x-api-key`）—— 联系系统管理员获取
+- 已安�?[Claude Code](https://claude.ai/code)
+- 拥有有效�?SoloMktKV API Key（`x-api-key`）—�?联系系统管理员获�?
 
 #### 方式一：从插件市场安装（推荐）
 
@@ -159,44 +159,44 @@ MIT License — see [LICENSE](LICENSE) file for details.
 # 1. 添加 SoloMkt-KV 插件市场
 claude plugin marketplace add SoloMkt-KV/SoloMktKV-ClaudeCode
 
-# 2. 从市场安装 generator-kv 插件
+# 2. 从市场安�?generator-kv 插件
 claude plugin install generator-kv@SoloMkt-KV
 ```
 
-#### 方式二：从 GitHub 直接安装
+#### 方式二：�?GitHub 直接安装
 
 ```bash
-# 直接从 GitHub 仓库安装
+# 直接�?GitHub 仓库安装
 claude plugin install generator-kv@SoloMkt-KV/SoloMktKV-ClaudeCode
 ```
 
 ### 使用方式
 
-#### 方式一：斜杠命令
+#### 方式一：斜杠命�?
 
 ```
 /generator-kv:generate-kv <活动名称>
 ```
 
-**示例：**
+**示例�?*
 
 ```
-/generator-kv:generate-kv 第四届中国国际供应链促进博览会
+/generator-kv:generate-kv 第四届中国国际供应链促进博览�?
 ```
 
-插件将按以下流程运行：
-1. 检查 API Key 是否已配置（如未配置则引导输入）
-2. 从 API 获取可用风格模型
-3. 让你选择喜欢的视觉风格
+插件将按以下流程运行�?
+1. 检�?API Key 是否已配置（如未配置则引导输入）
+2. �?API 获取可用风格模型
+3. 让你选择喜欢的视觉风�?
 4. 引导填写活动详情（主题、时间、地点）
 5. 可选填写补充提示词、图片质量与尺寸偏好
-6. 生成 KV 海报并返回图片链接
+6. 生成 KV 海报并返回图片链�?
 
 #### 方式二：自然语言对话
 
-你无需记住精确的命令格式 — 直接用自然语言和 Claude 对话即可！插件会自动识别你的意图并引导你完成生成。
+你无需记住精确的命令格�?�?直接用自然语言�?Claude 对话即可！插件会自动识别你的意图并引导你完成生成�?
 
-**示例：**
+**示例�?*
 
 | 触发方式 | 示例 |
 |----------|------|
@@ -205,22 +205,22 @@ claude plugin install generator-kv@SoloMkt-KV/SoloMktKV-ClaudeCode
 | 英文 | `Help me generate a KV poster for [activity description]` |
 | 英文 | `Create a key visual for our [event name]` |
 
-只要你的请求中提到了生成 KV、主视觉海报或活动海报，插件就会自动启动并引导你完成每一步 — 无需斜杠命令。
+只要你的请求中提到了生成 KV、主视觉海报或活动海报，插件就会自动启动并引导你完成每一�?�?无需斜杠命令�?
 
 ### 配置说明
 
-插件将 API 凭证存储在 `${CLAUDE_PLUGIN_DATA}/auth.json`：
+插件�?API 凭证存储�?`${CLAUDE_PLUGIN_DATA}/auth.json`�?
 
 ```json
 {
-  "base_url": "https://solosmart-uat.issmart.com.cn",
+  "base_url": "https://api.kv.solomarketing.com.cn",
   "x-api-key": "你的-api-key",
   "created_at": "2026-04-10T00:00:00.000Z",
   "source": "auto_provisioned"
 }
 ```
 
-如需手动配置或更新 API Key，可直接编辑此文件，或直接运行 `/generator-kv:generate-kv` —— 插件会自动检测缺失的凭证并引导完成配置。
+如需手动配置或更�?API Key，可直接编辑此文件，或直接运�?`/generator-kv:generate-kv` —�?插件会自动检测缺失的凭证并引导完成配置�?
 
 ### 卸载
 
@@ -232,22 +232,22 @@ claude plugin uninstall generator-kv
 claude plugin marketplace remove SoloMkt-KV
 ```
 
-注意：卸载插件不会删除 `${CLAUDE_PLUGIN_DATA}/auth.json` 文件。如需彻底清除所有数据，请手动删除该文件。
+注意：卸载插件不会删�?`${CLAUDE_PLUGIN_DATA}/auth.json` 文件。如需彻底清除所有数据，请手动删除该文件�?
 
 ### API 接口
 
 | 接口 | 请求方式 | 说明 |
 |------|----------|------|
-| `/solomkt_kv/api/v1/models?type=all` | GET | 获取可用风格模型列表 |
-| `/solomkt_kv/api/v1/generateKV` | POST | 生成 KV 主视觉图片 |
+| `/api/v1/models?type=all` | GET | 获取可用风格模型列表 |
+| `/api/v1/generateKV` | POST | 生成 KV 主视觉图�?|
 
 ### 仓库信息
 
 - **GitHub 仓库**: [https://github.com/SoloMkt-KV/SoloMktKV-ClaudeCode](https://github.com/SoloMkt-KV/SoloMktKV-ClaudeCode)
 - **插件市场名称**: SoloMkt-KV
 - **插件名称**: generator-kv
-- **作者**: [SoloMkt-KV](https://github.com/SoloMkt-KV)
+- **作�?*: [SoloMkt-KV](https://github.com/SoloMkt-KV)
 
-### 开源协议
+### 开源协�?
 
-MIT License — 详见 [LICENSE](LICENSE) 文件。
+MIT License �?详见 [LICENSE](LICENSE) 文件�?

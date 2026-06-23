@@ -4,18 +4,18 @@ argument-hint: <activity_name>
 allowed-tools: [Bash, Read, Write, AskUserQuestion]
 ---
 
-# /generate-kv — Activity KV Key Visual Poster Generation
+# /generate-kv �?Activity KV Key Visual Poster Generation
 
 Invoke the `generate-kv` skill to guide the user through generating an activity KV poster.
 
 ## Flow Summary
 
-1. **Check API Key** — Verify or auto-configure `${CLAUDE_PLUGIN_DATA}/auth.json`
-2. **Fetch Models** — GET `/solomkt_kv/api/v1/models?type=all`
-3. **Select Model** — Let user pick from available style models
-4. **Collect Info** — activityName, activityTheme, activityTime, activityLocation
-5. **Generate** — POST `/solomkt_kv/api/v1/generateKV` (timeout: 10 min; tell user to expect 1–3 minutes)
-6. **Present Results** — Display generated image URLs
+1. **Check API Key** �?Verify or auto-configure `${CLAUDE_PLUGIN_DATA}/auth.json`
+2. **Fetch Models** �?GET `/api/v1/models?type=all`
+3. **Select Model** �?Let user pick from available style models
+4. **Collect Info** �?activityName, activityTheme, activityTime, activityLocation
+5. **Generate** �?POST `/api/v1/generateKV` (timeout: 10 min; tell user to expect 1�? minutes)
+6. **Present Results** �?Display generated image URLs
 
 ## Implementation
 
@@ -31,7 +31,7 @@ Read `${CLAUDE_PLUGIN_DATA}/auth.json`.
 
 **If missing or x-api-key is empty:**
 - Tell user: "⚠️ SoloMktKV API Key is not configured."
-- Ask user to provide their `x-api-key`. Optionally ask for custom `base_url` (default: `https://solosmart-uat.issmart.com.cn`).
+- Ask user to provide their `x-api-key`. Optionally ask for custom `base_url` (default: `https://api.kv.solomarketing.com.cn`).
 - Write the auth file:
 ```json
 {
@@ -42,7 +42,7 @@ Read `${CLAUDE_PLUGIN_DATA}/auth.json`.
 }
 ```
 - Ensure directory exists via `mkdir -p` first.
-- Confirm: "✅ API Key configured successfully!"
+- Confirm: "�?API Key configured successfully!"
 
 **If file exists and valid:** Proceed to Step 2.
 
@@ -51,7 +51,7 @@ Read `${CLAUDE_PLUGIN_DATA}/auth.json`.
 AUTH_FILE="${CLAUDE_PLUGIN_DATA}/auth.json"
 BASE_URL=$(jq -r '.base_url' "$AUTH_FILE")
 API_KEY=$(jq -r '.["x-api-key"]' "$AUTH_FILE")
-curl -s -X GET "${BASE_URL}/solomkt_kv/api/v1/models?type=all" -H "x-api-key: ${API_KEY}"
+curl -s -X GET "${BASE_URL}/api/v1/models?type=all" -H "x-api-key: ${API_KEY}"
 ```
 
 Parse response. If `success` is not true, report error and stop. Extract `data.system[]` array (id, name, sub, tags, gradient, previewImageUrl).
@@ -63,11 +63,11 @@ Present models via **AskUserQuestion**. Format: `"<id> - <name> (<sub>)"`, descr
 Use **AskUserQuestion** (ask all at once):
 1. **activityName** (活动名称): 1-200 chars, required. Pre-fill with `$ARGUMENTS` if provided.
 2. **activityTheme** (活动主题): 1-200 chars, required.
-3. **activityTime** (活动时间): 1-200 chars, required. E.g., "2026年6月22日—26日"
+3. **activityTime** (活动时间): 1-200 chars, required. E.g., "2026�?�?2日�?6�?
 4. **activityLocation** (活动地点): 1-200 chars, required.
 
 Then optionally ask:
-5. **prompt** (补充提示词): Optional, max 1000 chars.
+5. **prompt** (补充提示�?: Optional, max 1000 chars.
 6. **posterQuality** (图片质量): Optional. Options: "2K" (default), "4K", "HD"
 7. **posterSize** (图片尺寸): Optional. Options: "16:9" (default), "9:16", "1:1", "4:3", "3:4"
 
@@ -97,7 +97,7 @@ jq -n \
     posterSize: $posterSize
   }' > /tmp/generate_kv_payload.json
 
-curl -s -X POST "${BASE_URL}/solomkt_kv/api/v1/generateKV" \
+curl -s -X POST "${BASE_URL}/api/v1/generateKV" \
   -H "x-api-key: ${API_KEY}" \
   -H "Content-Type: application/json" \
   --max-time 600 \
@@ -107,11 +107,11 @@ curl -s -X POST "${BASE_URL}/solomkt_kv/api/v1/generateKV" \
 Important: `posterSize` must be a JSON string representation of an array, e.g., `'["16:9"]'`.
 
 ### Step 6: Present Results
-Parse response — on success it's an array of image URLs. Display each URL and summarize generation parameters. On error, display the error message.
+Parse response �?on success it's an array of image URLs. Display each URL and summarize generation parameters. On error, display the error message.
 
 ## Important Notes
 - API Key stored locally in `${CLAUDE_PLUGIN_DATA}/auth.json`, only sent to the configured API server
-- Default base URL: `https://solosmart-uat.issmart.com.cn`
+- Default base URL: `https://api.kv.solomarketing.com.cn`
 - `posterSize` always as string: `'["16:9"]'` not `["16:9"]`
 - Text fields limited to 200 chars (activityName/Theme/Time/Location)
 - Prompt limited to 1000 chars
