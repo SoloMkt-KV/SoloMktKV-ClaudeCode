@@ -1,173 +1,253 @@
+# Generator-KV — SoloMktKV 活动主视觉海报生成插件 | Activity KV Key Visual Poster Generator
+
+[English](#english) | [中文](#chinese)
+
 ---
-name: generate-kv
-description: Generate activity KV key visual posters via SoloMktKV API. Use when the user invokes /generate-kv, or uses natural language such as: "generate KV", "create KV poster", "make activity poster", "generate key visual", "生成KV", "生成主视觉", "制作活动海报", "帮我生成一张KV", "帮我做一个KV海报", "制作一张主视觉", "推广活动海报", "活动主视觉", "新品发布KV", "Help me generate a KV", "Create a key visual for", "Make a poster for our event".
-argument-hint: <activity_name>
-allowed-tools: [Bash, Read, Write, AskUserQuestion]
----
 
-# Generator-KV — Activity KV Key Visual Poster Generation
+<a id="english"></a>
 
-This skill guides the user through generating an activity KV (Key Visual) poster using the SoloMktKV API.
+## English
 
-## Configuration
+### Overview
 
-The plugin stores API credentials in `${CLAUDE_PLUGIN_DATA}/auth.json` with the following structure:
+**Generator-KV** is a Claude Code plugin that generates activity KV (Key Visual) posters via the SoloMktKV API. It helps marketers, event planners, and designers quickly create stunning promotional key visuals by simply describing their event — no design skills needed.
+
+### Features
+
+- 🔑 **Auto API Key Configuration** — On first use, prompts you to enter your API key and saves it securely
+- 🎨 **Model List Browsing** — Fetches available style models from the API, letting you preview and choose the perfect visual style
+- 📝 **Guided Input** — Asks for activity name, theme, time, and location step by step
+- 🖼️ **One-Click Generation** — Calls the SoloMktKV API to generate professional KV posters
+- 🔒 **Secure Storage** — API keys are stored locally in `${CLAUDE_PLUGIN_DATA}/auth.json` and only sent to the configured API server
+- 🚀 **Session Reminder** — Automatically checks API key status on session start
+
+### Installation
+
+#### Prerequisites
+
+- [Claude Code](https://claude.ai/code) installed
+- A valid SoloMktKV API Key (`x-api-key`) — contact your system administrator to obtain one
+
+#### Method 1: Install from Marketplace (Recommended)
+
+```bash
+# 1. Add the SoloMkt-KV marketplace
+claude plugin marketplace add SoloMkt-KV/SoloMktKV-ClaudeCode
+
+# 2. Install the generator-kv plugin from the marketplace
+claude plugin install generator-kv@SoloMkt-KV
+```
+
+#### Method 2: Install from GitHub Directly
+
+```bash
+# Install directly from the GitHub repository
+claude plugin install generator-kv@SoloMkt-KV/SoloMktKV-ClaudeCode
+```
+
+### Usage
+
+#### Method 1: Slash Command
+
+```
+/generator-kv:generate-kv <activity_name>
+```
+
+**Example:**
+
+```
+/generator-kv:generate-kv 第四届中国国际供应链促进博览会
+```
+
+The plugin will then:
+1. Check if your API key is configured (prompt you to enter it if not)
+2. Fetch available style models from the API
+3. Let you choose a visual style
+4. Ask for activity details (theme, time, location)
+5. Optionally ask for supplementary prompt, quality, and size preferences
+6. Generate the KV poster and return the image URLs
+
+#### Method 2: Natural Language Conversation
+
+You don't need to remember the exact command format — just talk to Claude in natural language! The plugin will automatically recognize your intent and guide you through the generation process.
+
+**Examples:**
+
+| Trigger | Example |
+|---------|---------|
+| Chinese | `帮我生成一张【活动描述】的KV` |
+| Chinese | `为我们的【活动名称】制作一张主视觉海报` |
+| English | `Help me generate a KV poster for [activity description]` |
+| English | `Create a key visual for our [event name]` |
+
+As long as your request mentions generating a KV, key visual poster, or activity poster, the plugin will automatically activate and walk you through each step — no slash command needed.
+
+### Configuration
+
+The plugin stores your API credentials in `${CLAUDE_PLUGIN_DATA}/auth.json`:
 
 ```json
 {
   "base_url": "https://solosmart-uat.issmart.com.cn",
-  "x-api-key": "generated-api-key",
+  "x-api-key": "your-api-key-here",
   "created_at": "2026-04-10T00:00:00.000Z",
   "source": "auto_provisioned"
 }
 ```
 
-## Flow
+To manually configure or update your API key, edit this file or simply run `/generator-kv:generate-kv` — the plugin will detect missing credentials and guide you through setup.
 
-### Step 0: Read the activity name from arguments
+### Uninstallation
 
-The user may provide an activity name via `$ARGUMENTS`. If provided, store it as the preliminary `activityName` for later use. If not provided, proceed without it.
+```bash
+# Remove the plugin
+claude plugin uninstall generator-kv
 
-### Step 1: Check API Key Configuration
+# (Optional) Remove the marketplace
+claude plugin marketplace remove SoloMkt-KV
+```
 
-Read the auth file at `${CLAUDE_PLUGIN_DATA}/auth.json` using the Read tool.
+Note: Uninstalling the plugin does NOT delete your `${CLAUDE_PLUGIN_DATA}/auth.json` file. To completely remove all data, manually delete the auth file.
 
-**If the file does not exist or `x-api-key` is empty/missing:**
+### API Endpoints
 
-1. Inform the user: "⚠️ SoloMktKV API Key is not configured. This key is required to call the model list and KV generation APIs."
-2. Ask the user to provide their API Key (`x-api-key` value). Also optionally ask if they want to customize the `base_url` (default: `https://solosmart-uat.issmart.com.cn`).
-3. Once the user provides the key, create/update `${CLAUDE_PLUGIN_DATA}/auth.json` with:
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/solomkt_kv/api/v1/models?type=all` | GET | Fetch available style models |
+| `/solomkt_kv/api/v1/generateKV` | POST | Generate KV poster images |
+
+### Repository
+
+- **GitHub**: [https://github.com/SoloMkt-KV/SoloMktKV-ClaudeCode](https://github.com/SoloMkt-KV/SoloMktKV-ClaudeCode)
+- **Marketplace**: SoloMkt-KV
+- **Plugin Name**: generator-kv
+- **Author**: [SoloMkt-KV](https://github.com/SoloMkt-KV)
+
+### License
+
+MIT License — see [LICENSE](LICENSE) file for details.
+
+---
+
+<a id="chinese"></a>
+
+## 中文
+
+### 概述
+
+**Generator-KV** 是一款 Claude Code 插件，通过 SoloMktKV API 生成活动 KV（主视觉）海报。帮助市场营销人员、活动策划者和设计师通过简单描述活动信息，快速生成专业的主视觉图像——无需设计技能。
+
+### 功能特点
+
+- 🔑 **自动配置 API Key** — 首次使用时提示输入 API Key 并安全保存
+- 🎨 **模型列表浏览** — 从 API 获取可用风格模型列表，预览并选择最适合的视觉风格
+- 📝 **引导式输入** — 逐步引导填写活动名称、主题、时间、地点
+- 🖼️ **一键生成** — 调用 SoloMktKV API 生成专业 KV 海报
+- 🔒 **安全存储** — API Key 仅存储在本地 `${CLAUDE_PLUGIN_DATA}/auth.json`，仅发送至配置的 API 服务器
+- 🚀 **会话提醒** — 会话启动时自动检查 API Key 配置状态
+
+### 安装
+
+#### 前置条件
+
+- 已安装 [Claude Code](https://claude.ai/code)
+- 拥有有效的 SoloMktKV API Key（`x-api-key`）—— 联系系统管理员获取
+
+#### 方式一：从插件市场安装（推荐）
+
+```bash
+# 1. 添加 SoloMkt-KV 插件市场
+claude plugin marketplace add SoloMkt-KV/SoloMktKV-ClaudeCode
+
+# 2. 从市场安装 generator-kv 插件
+claude plugin install generator-kv@SoloMkt-KV
+```
+
+#### 方式二：从 GitHub 直接安装
+
+```bash
+# 直接从 GitHub 仓库安装
+claude plugin install generator-kv@SoloMkt-KV/SoloMktKV-ClaudeCode
+```
+
+### 使用方式
+
+#### 方式一：斜杠命令
+
+```
+/generator-kv:generate-kv <活动名称>
+```
+
+**示例：**
+
+```
+/generator-kv:generate-kv 第四届中国国际供应链促进博览会
+```
+
+插件将按以下流程运行：
+1. 检查 API Key 是否已配置（如未配置则引导输入）
+2. 从 API 获取可用风格模型
+3. 让你选择喜欢的视觉风格
+4. 引导填写活动详情（主题、时间、地点）
+5. 可选填写补充提示词、图片质量与尺寸偏好
+6. 生成 KV 海报并返回图片链接
+
+#### 方式二：自然语言对话
+
+你无需记住精确的命令格式 — 直接用自然语言和 Claude 对话即可！插件会自动识别你的意图并引导你完成生成。
+
+**示例：**
+
+| 触发方式 | 示例 |
+|----------|------|
+| 中文 | `帮我生成一张【活动描述】的KV` |
+| 中文 | `为我们的【活动名称】制作一张主视觉海报` |
+| 英文 | `Help me generate a KV poster for [activity description]` |
+| 英文 | `Create a key visual for our [event name]` |
+
+只要你的请求中提到了生成 KV、主视觉海报或活动海报，插件就会自动启动并引导你完成每一步 — 无需斜杠命令。
+
+### 配置说明
+
+插件将 API 凭证存储在 `${CLAUDE_PLUGIN_DATA}/auth.json`：
 
 ```json
 {
-  "base_url": "<base_url_or_default>",
-  "x-api-key": "<user_provided_key>",
-  "created_at": "<current_ISO_timestamp>",
+  "base_url": "https://solosmart-uat.issmart.com.cn",
+  "x-api-key": "你的-api-key",
+  "created_at": "2026-04-10T00:00:00.000Z",
   "source": "auto_provisioned"
 }
 ```
 
-Use the Write tool to save this file. Make sure the directory exists first (run `mkdir -p` via Bash if needed).
+如需手动配置或更新 API Key，可直接编辑此文件，或直接运行 `/generator-kv:generate-kv` —— 插件会自动检测缺失的凭证并引导完成配置。
 
-4. Confirm: "✅ API Key configured successfully!"
-
-**If the file exists and `x-api-key` is valid:**
-
-Proceed directly to Step 2.
-
-### Step 2: Fetch Model List
-
-Use `curl` via Bash to fetch the available models:
+### 卸载
 
 ```bash
-AUTH_FILE="${CLAUDE_PLUGIN_DATA}/auth.json"
-BASE_URL=$(jq -r '.base_url' "$AUTH_FILE")
-API_KEY=$(jq -r '.["x-api-key"]' "$AUTH_FILE")
-curl -s -X GET "${BASE_URL}/solomkt_kv/api/v1/models?type=all" -H "x-api-key: ${API_KEY}"
+# 卸载插件
+claude plugin uninstall generator-kv
+
+# （可选）移除插件市场
+claude plugin marketplace remove SoloMkt-KV
 ```
 
-Parse the JSON response. If `success` is not `true`, report the error to the user and stop.
+注意：卸载插件不会删除 `${CLAUDE_PLUGIN_DATA}/auth.json` 文件。如需彻底清除所有数据，请手动删除该文件。
 
-Otherwise, extract the `data.system[]` array. Each model has:
-- `id` — Model ID (use this for generation)
-- `name` — Display name (e.g., "科技蓝调")
-- `sub` — Sub-style (e.g., "极简主义")
-- `tags` — Style tags
-- `gradient` — CSS gradient preview
-- `previewImageUrl` — Preview image URL
+### API 接口
 
-### Step 3: Let User Select a Model
+| 接口 | 请求方式 | 说明 |
+|------|----------|------|
+| `/solomkt_kv/api/v1/models?type=all` | GET | 获取可用风格模型列表 |
+| `/solomkt_kv/api/v1/generateKV` | POST | 生成 KV 主视觉图片 |
 
-Present the available models to the user using **AskUserQuestion**. Format each option as:
+### 仓库信息
 
-```
-label: "<id> - <name> (<sub>)"
-description: "Tags: <tags>"
-```
+- **GitHub 仓库**: [https://github.com/SoloMkt-KV/SoloMktKV-ClaudeCode](https://github.com/SoloMkt-KV/SoloMktKV-ClaudeCode)
+- **插件市场名称**: SoloMkt-KV
+- **插件名称**: generator-kv
+- **作者**: [SoloMkt-KV](https://github.com/SoloMkt-KV)
 
-If there are more than 4 models, display them all in a readable list first, then ask the user to type the model ID they want. Use AskUserQuestion with the top models and an "Other" option for the rest.
+### 开源协议
 
-The user must select one model. Store the selected `id` as `modelId`.
-
-### Step 4: Collect Required Activity Information
-
-Use **AskUserQuestion** to collect the remaining required fields from the user. Ask all questions at once:
-
-1. **activityName** (Activity Name / 活动名称): 1-200 characters, required. If `$ARGUMENTS` was provided, pre-fill with that value but still allow the user to edit.
-2. **activityTheme** (Activity Theme / 活动主题): 1-200 characters, required.
-3. **activityTime** (Activity Time / 活动时间): 1-200 characters, required. E.g., "2026年6月22日—26日"
-4. **activityLocation** (Activity Location / 活动地点): 1-200 characters, required. E.g., "中国国际展览中心（顺义馆）"
-
-After getting the required info, optionally ask:
-
-5. **prompt** (Supplementary prompt / 补充提示词): Optional, max 1000 characters. Additional generation requirements.
-6. **posterQuality** (Image Quality / 图片质量): Optional. Options: "2K" (default), "4K", "HD"
-7. **posterSize** (Image Size / 图片尺寸): Optional. Options: "16:9" (default, horizontal), "9:16" (vertical), "1:1" (square), "4:3", "3:4"
-
-### Step 5: Call the Generate KV API
-
-**Note:** KV generation takes time — it typically completes within 1–3 minutes. Please tell the user: *"正在生成KV海报，预计需要 1–3 分钟，请耐心等待…"* (or the English equivalent: *"Generating your KV poster — this may take 1–3 minutes, please wait..."*) before making the API call.
-
-Construct and send the POST request (timeout set to 10 minutes):
-
-```bash
-AUTH_FILE="${CLAUDE_PLUGIN_DATA}/auth.json"
-BASE_URL=$(jq -r '.base_url' "$AUTH_FILE")
-API_KEY=$(jq -r '.["x-api-key"]' "$AUTH_FILE")
-
-# Build JSON payload using jq for proper escaping
-jq -n \
-  --arg modelId "<modelId>" \
-  --arg activityName "<activityName>" \
-  --arg activityTheme "<activityTheme>" \
-  --arg activityTime "<activityTime>" \
-  --arg activityLocation "<activityLocation>" \
-  --arg prompt "<prompt_or_empty>" \
-  --arg posterQuality "<posterQuality_or_2K>" \
-  --arg posterSize '<posterSize_json_array>' \
-  '{
-    modelId: $modelId,
-    activityName: $activityName,
-    activityTheme: $activityTheme,
-    activityTime: $activityTime,
-    activityLocation: $activityLocation,
-    prompt: $prompt,
-    posterQuality: $posterQuality,
-    posterSize: $posterSize
-  }' > /tmp/generate_kv_payload.json
-
-curl -s -X POST "${BASE_URL}/solomkt_kv/api/v1/generateKV" \
-  -H "x-api-key: ${API_KEY}" \
-  -H "Content-Type: application/json" \
-  --max-time 600 \
-  -d @/tmp/generate_kv_payload.json
-```
-
-Important: The `posterSize` parameter must be passed as a JSON string representation of an array, e.g., `'["16:9"]'` (a string that looks like a JSON array, not an actual JSON array). In jq, use `--arg posterSize '["16:9"]'` to pass it as a string.
-
-### Step 6: Present Results
-
-Parse the API response. On success, it returns an array of image URLs:
-
-```json
-[
-  "https://files-dev.renmaibaohe.com/2026/06/20260608091909-8061c148.png",
-  "https://files-dev.renmaibaohe.com/2026/06/20260608091913-58db4bb7.png"
-]
-```
-
-Display the results to the user:
-1. Show each generated image URL
-2. If the platform supports it, render the images inline
-3. Provide a summary of the generation parameters used
-
-If the API returns an error, display the error message and suggest the user verify their parameters and API key.
-
-## Important Notes
-
-- **API Key Security**: The API key is stored locally in `${CLAUDE_PLUGIN_DATA}/auth.json` and is never transmitted except to the configured SoloMktKV API server.
-- **Default base URL**: `https://solosmart-uat.issmart.com.cn` (API paths are under `/solomkt_kv/api/v1/`)
-- **posterSize format**: Always pass as a string representation of a JSON array, e.g., `'["16:9"]'` not `["16:9"]`.
-- All text fields (activityName, activityTheme, activityTime, activityLocation) are limited to 200 characters.
-- The prompt field is optional and limited to 1000 characters.
-- The generated images are hosted on the remote server. Download them if long-term storage is needed.
+MIT License — 详见 [LICENSE](LICENSE) 文件。
