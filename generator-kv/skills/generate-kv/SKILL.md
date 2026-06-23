@@ -1,9 +1,9 @@
-```json
+---
 name: generate-kv
 description: Generate activity KV key visual posters via SoloMktKV API. Use when the user invokes /generate-kv, or uses natural language such as: "generate KV", "create KV poster", "make activity poster", "generate key visual", "生成KV", "生成主视觉", "制作活动海报", "帮我生成一张KV", "帮我做一个KV海报", "制作一张主视觉", "推广活动海报", "活动主视觉", "新品发布KV", "Help me generate a KV", "Create a key visual for", "Make a poster for our event".
 argument-hint: <activity_name>
 allowed-tools: [Bash, Read, Write, AskUserQuestion]
-```
+---
 
 # Generator-KV — Activity KV Key Visual Poster Generation
 
